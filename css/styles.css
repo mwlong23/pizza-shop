@@ -1,3 +1,7 @@
 .body{
-  background-color: blue;
+
+  background-image: url("../img/pizza.jpg");
+}
+.order-field {
+  font-weight: bold;
 }
