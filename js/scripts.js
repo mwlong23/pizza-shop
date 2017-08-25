@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $("#add-topping").click(function(event){
     event.preventDefault();
-    debugger;
+    // debugger;
     $("#new-toppings").append('<div class="new-topping extra" >'+
       '<div class="form group">'+
         '<label for="topping">Select A Topping:</label>'+
@@ -17,7 +17,13 @@ $(document).ready(function(){
         '</select>'+
       '</div>'+
     '</div>');
+  });
+  $("form#new-pizza").submit(function(event){
+    event.preventDefault();
 
+    var inputtedPizzaSize = $("#pizza-size").val();
+    var inputtedSauce = $("#sauce").val();
+    var inputtedTopping = $("#topping").val();
 
 
   });
