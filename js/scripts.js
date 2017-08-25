@@ -31,15 +31,13 @@ Pizza.prototype.priceCalculator = function() {
   if(this.sauce === "pesto" || this.sauce === "white"){
     saucePrice = 3.0;
   };
-  return toppingsPrice + saucePrice + sizePrice
+  var orderTotal = toppingsPrice + saucePrice + sizePrice;
+  return ordertotal;
 };
 
 //User Interface
 $(document).ready(function(){
-  // $(function(event){
-  //   event.preventDefault();
-  //   // debugger;
-  //   });
+
   $("#add-pizza").click(function(event){
     event.preventDefault();
 

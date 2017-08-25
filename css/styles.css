@@ -1,7 +1,14 @@
-.body{
+body{
 
-  background-image: url("../img/pizza.jpg");
+  background: url("/Users/Guest/Desktop/pizza-shop/img/pizza.jpg");
+  background-attachment: fixed;
+  background-repeat:no-repeat;
+  background-size: 2000px;
+
 }
 .order-field {
   font-weight: bold;
+}
+.jumbotron{
+  background-color: red;
 }
