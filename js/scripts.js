@@ -38,23 +38,35 @@ if(this.size === "empty" || this.sauce=== "empty"){
   }
 };
 function taxCalculator (subTotal){
-  taxRate = .0125;
-  total = subTotal+(subTotal*taxRate);
-  return total;
+  taxRate = .11;
+  tax = subTotal*taxRate;
+  return tax;
 }
 
 
 //User Interface
 $(document).ready(function(){
-  subTotal = 0;
-  priceWithTax = subTotal + taxCalculator(subTotal)
+  var subtotal = 0.0;
+  var tax = 0.0
+
 
   $("#add-pizza").click(function(event){
     event.preventDefault();
+    $("#hide-ingredients").show();
+
+
+
+  });
+
+  $("#add-to-cart").click(function(){
+    $("#order-total").show();
+    $("#hide-ingredients").hide();
 
     var inputtedPizzaSize = $("#pizza-size").val();
     var inputtedSauce = $("#sauce").val();
-    var inputtedToppings = []
+    var inputtedToppings = [];
+    var newPizza = new Pizza(inputtedPizzaSize,inputtedSauce,inputtedToppings);
+    pizzaNoTaxAdded = parseFloat(newPizza.priceCalculator());
 
     $("input:checkbox[name=topping]:checked").each(function(){
       var selectedTopping = $(this).val();
@@ -62,25 +74,25 @@ $(document).ready(function(){
       $('input[type="checkbox"]').prop('checked', false); // Uncheck checkboxes
     });
 
-    var newPizza = new Pizza(inputtedPizzaSize,inputtedSauce,inputtedToppings);
-    pizzaNoTaxAdded = newPizza.priceCalculator();
+
+
+//displays totals in order summary
+    subtotal +=pizzaNoTaxAdded;
+    $("#subtotal").text(subtotal);
+    tax = taxCalculator(subtotal);
+    $("#calculated-tax").text(tax);
+    orderTotal = subtotal+ tax;
+    $("#final-price").text(orderTotal);
+
 
     if(inputtedPizzaSize === "empty" || inputtedSauce === "empty" || inputtedToppings === []){
-
     }else{
       $("#order-total").show();
-      $("#single-pizza-summary").append(subTotal + taxCalculator(newPizza.priceCalculator())
-                          +'<p><spanclass="order-field">Pizza Size:</span><br>'                                     +newPizza.size
-                          +'<p><spanclass="order-field">Sauce Type:</span><br>'
-                          + newPizza.sauce
-                          +'<p><span class="order-field">Toppings:</span><br>'
-                          +newPizza.toppings + '</p>');
-
-
+      $("#single-pizza-summary").append(
+                        '<p><spanclass="order-field">Pizza:</span><br>'                                 +newPizza.size
+                        +'-'+ newPizza.sauce+'-'+ newPizza.toppings
+                         + '</p> $ ' +pizzaNoTaxAdded+'<p>-----------------------------------------------------------------</p>'
+                        );
     }
-  });
-
-    $("#add-to-cart").click(function(){
-      $("#order-total").show();
-    })
+  })
 });

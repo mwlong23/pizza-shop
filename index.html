@@ -17,7 +17,7 @@
       <div>
         <div class="pizza well">
           <form id="pizza-options">
-            <div class="new-pizza">
+            <div id="hide-ingredients"class="new-pizza">
               <div class="form-group">
                 <label for="pizza-size">Select Size:</label>
                 <select id="pizza-size">
@@ -34,7 +34,7 @@
                 <label for="sauce">Select A Sauce:</label>
                 <select id="sauce">
                   <option value="empty">- -</option>
-                  <option value="red">Red Sauce</option>
+                  <option value="Marinara">Marinara</option>
                   <option value="alfredo">Alfredo</option>
                   <option value="pesto">Pesto</option>
                 </select>
@@ -54,21 +54,29 @@
             </div>
            </div>
            <span class="btn btn-success" id="add-to-cart"> Add to Cart</span>
-           <span class="btn btn-success" id="add-pizza"> Add Another Pizza</span>
+
 
            <input type="button" class="btn btn-success"value="Start Over" onClick="window.location.reload()">
         </form>
       </div>
       <div id="order-total" class="well">
         <h2>Order Summary:</h2>
+        <div class="row">
+          <div class="col-sm-6">
+            <span id="single-pizza-summary"></span>
+          </div>
+          <div class="col-sm-6">
         <span id="single-pizza-summary"></span>
+          </div>
+        </div>
         <br>
-        <p>-----------------------------------------------------------------</p>
-        <p>Subtotal: $</p>
-        <p>Tax: $</p>
-        <h2>Total: $ <span id="final-price"></span></h2>
-        <button type="submit" class="btn btn-success"><a href="https://github.com/mwlong23">Submit Order</a></button>
-
+        <div class="complete-order-total">
+          <p>Subtotal: $<span id="subtotal"></span></p>
+          <p>Tax: $<span id="calculated-tax"></span></p>
+          <h2>Total: $ <span id="final-price"></span></h2>
+          <button type="submit" class="btn btn-success"><a href="https://github.com/mwlong23">Submit Order</a></button>
+          <span class="btn btn-success" id="add-pizza"> Add Another Pizza</span>
+        </div>
       </div>
     </div>
   </body>
