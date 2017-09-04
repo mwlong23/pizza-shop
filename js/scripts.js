@@ -25,8 +25,8 @@ if(this.size === "empty" || this.sauce=== "empty"){
     }else if( this.size ==="party"){
       sizePrice =26;
     }
-  // debugger;
-    if(this.toppings[0].length > 2){
+  debugger;
+    if(this.toppings.length > 2){
       toppingsPrice = (this.toppings[0].length - 2) * 2.75;
     }
 
